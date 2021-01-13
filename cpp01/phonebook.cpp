@@ -6,12 +6,69 @@
 /*   By: kdahl <kdahl@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 13:11:09 by kdahl             #+#    #+#             */
-/*   Updated: 2021/01/13 15:00:00 by kdahl            ###   ########.fr       */
+/*   Updated: 2021/01/13 21:46:29 by kdahl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 using namespace std;
+
+class Contact
+{
+	public:
+		//Function prints name and surename of added contact
+		void	print(void)
+		{
+			cout << "You have added the contact " << firstName << " " << lastName << endl;
+		}
+		
+		//Function sets the name of the contact
+		void	setName(string temp)
+		{
+			firstName = temp;
+		}
+		
+		//Function sets the last name of the contact
+		void	setLastName(string temp)
+		{
+			lastName = temp;
+		}
+
+	private:
+		//Here we declare the variables with their type
+		string	firstName;
+		string	lastName;
+		
+};
+
+class	PhoneBook
+{
+	private:
+		Contact	contact[8];
+		int		contact_counter = 0;
+	
+	public:
+		void	addContact(void)
+		{
+			string	AddFirstName;
+			string	AddLastName;
+
+
+			if (contact_counter > 8 ) { cout << "Too many contacts!" << endl; };
+			cout << "\x1B[34mEnter first name: \033[0m";
+			getline(cin, AddFirstName);
+			cout << "\x1B[34mEnter last name: \033[0m";
+			getline(cin, AddLastName);
+			contact[contact_counter].setName(AddFirstName);
+			contact[contact_counter].setLastName(AddLastName);
+			for (int i = 0; i <= contact_counter; i++)
+			{
+				contact[i].print();	
+			}
+			//contact[contact_counter].print();
+			contact_counter++;
+		}
+};
 
 void	welcome(void)
 {
@@ -32,18 +89,19 @@ void	welcome(void)
 
 int	main(void)
 {
-	bool	proc_running;
-	string	todo;
+	bool		proc_running;
+	string		todo;
+	PhoneBook	phonebook;
 
 	proc_running = true;
+	welcome();
 	while (proc_running)
 	{
-		welcome();
 		cout << "\x1B[31m>\033[0m";
 
 		//Getting command from user and write it in todo
 		getline(cin, todo);
-		if (todo == "ADD") { cout << "You write " << todo << endl; }
+		if (todo == "ADD") { phonebook.addContact(); }
 		if (todo == "SEARCH") { cout << "You write " << todo << endl; }
 		if (todo == "EXIT") { cout << "Bye Bye!" << endl; proc_running = false; }
 	}
