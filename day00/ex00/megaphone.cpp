@@ -6,11 +6,13 @@
 /*   By: kdahl <kdahl@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 19:27:20 by kdahl             #+#    #+#             */
-/*   Updated: 2021/01/10 14:55:30 by kdahl            ###   ########.fr       */
+/*   Updated: 2021/01/13 20:31:13 by kdahl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+
+class	Contact
 
 int	main(int argc, char **argv)
 {
